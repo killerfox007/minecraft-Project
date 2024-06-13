@@ -1,5 +1,5 @@
-import MobForm from "../components/MobForm"
-import MobList from "../components/MobList"
+import MobForm from "./components/MobForm"
+import MobList from "./components/MobList"
 import App from "./App"
 
 export default [
