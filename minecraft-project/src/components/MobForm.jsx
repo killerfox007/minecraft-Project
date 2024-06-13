@@ -1,8 +1,12 @@
 import React from 'react'
 
+
 function MobForm() {
   return (
-    <div>MobForm</div>
+    
+    <div>
+      <p>MobForm</p>
+    </div>
   )
 }
 
