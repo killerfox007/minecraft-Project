@@ -1,0 +1,12 @@
+{
+    "Mobs": [
+        {
+            "id":1,
+            "name": "Creeper",
+            "Difficulty": 5,
+            "Health": 20,
+            "Damage":43
+
+        }
+    ]
+}
