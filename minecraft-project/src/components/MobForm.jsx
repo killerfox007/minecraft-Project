@@ -39,8 +39,8 @@ const data = resp.json()
 addMob(data)
 setMobData(initalMobForm)
 
-
 }
+
   return (
     
     <div>

@@ -19,13 +19,13 @@ function App() {
     setMobData([...mobData, addedMob])
   }
 
-
+const viewedMobs = mobData.filter((mob) => mob.name.toLowerCase().includes(searching.toLowerCase()))
 
   return (
     <div>
       Welcome To The home page, select an option!
       <NavBar />
-      <Outlet context={{addMob, mobData}}/>
+      <Outlet context={{addMob, viewedMobs, searching, setSearching}}/>
     </div>
   )
 }
