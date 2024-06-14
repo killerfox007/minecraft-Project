@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { baseUrl } from './components/Global'
 function App() {
   const [mobData, setMobData] = useState([])
+  const [newMobData, setNewMobData] = useState([])
   useEffect(() => {
     async function getMobData() {
       const resp = await fetch(baseUrl + 'Mobs')
@@ -13,7 +14,9 @@ function App() {
     }
     getMobData()
   },[])
-  
+  function addMob(addedMob){
+    setMobData(...mobData, addedMob)
+  }
 
   const mob = mobData.map((singleMob, index) => 
     <div key={index}>
@@ -26,9 +29,10 @@ function App() {
 
   return (
     <div>
-    <NavBar />
-    {mob}
-    <Outlet />
+      Welocme To The home page, select an option!
+      <NavBar />
+     
+      <Outlet context={{mob , addMob}}/>
     </div>
   )
 }
