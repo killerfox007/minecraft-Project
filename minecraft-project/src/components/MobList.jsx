@@ -1,13 +1,19 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom'
-
+import MobCard from './MobCard'
 function MobList() {
-  const {mob} = useOutletContext()
-  // need to incorp mob card or replace it
+  const {mobData} = useOutletContext()
+  console.log(mobData)
+  const mob = mobData.map((singleMob,index) => {
+   return <MobCard key={index} singleMob={singleMob} />
+  })
+   if (mobData.length < 1){
+    return (<h1>Loading...</h1>)
+   }
   return (
     <div>
       <h1>MobList</h1> 
-        {mob} 
+      {mob}
       </div>
   )
 }

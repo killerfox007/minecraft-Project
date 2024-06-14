@@ -1,8 +1,14 @@
 import React from 'react'
 
-function MobCard() {
+function MobCard({singleMob}) {
   return (
-    <div>MobCard</div>
+    <div>
+        <h4>{singleMob.name}</h4>
+        <p>{singleMob.Difficulty}</p>
+        <p>{singleMob.Health}</p>
+        <p>{singleMob.Damage}</p>
+        <img src={singleMob.Image} />
+    </div>
   )
 }
 
