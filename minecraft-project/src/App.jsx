@@ -5,7 +5,7 @@ import { baseUrl } from './components/Global'
 function App() {
   const [mobData, setMobData] = useState([])
   const [searching, setSearching] = useState("")
-
+ 
   useEffect(() => {
     async function getMobData() {
       const resp = await fetch(baseUrl + 'Mobs')
@@ -19,8 +19,8 @@ function App() {
     setMobData([...mobData, addedMob])
   }
 
-const viewedMobs = mobData.filter((mob) => mob.name.toLowerCase().includes(searching.toLowerCase()))
-
+  const viewedMobs = mobData.filter((mob) => mob && mob.name && mob.name.toLowerCase().includes(searching.toLowerCase()));
+      
   return (
     <div>
       Welcome To The home page, select an option!

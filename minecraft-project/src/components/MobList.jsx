@@ -12,7 +12,7 @@ function MobList() {
   return (
     <div>
       <h1>MobList</h1> 
-      <Search searching={searching} setSearching={setSearching}/>
+      <Search />
       {mob}
       </div>
   )
