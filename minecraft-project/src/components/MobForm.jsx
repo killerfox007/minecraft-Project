@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { baseUrl } from './Global'
+import { baseUrl, pictureForForm, pictureForForm1, pictureForForm2 } from './Global'
 const initalMobForm = {
   name:"",
   Difficulty:0,
@@ -19,9 +19,9 @@ function handleChange(event){
 }
   setMobData(newMobData)
 }
-async function handleSubmit(event){
+function handleSubmit(event){
   event.preventDefault()
-const resp = await fetch(baseUrl + 'Mobs', { 
+fetch(baseUrl + 'Mobs', { 
   method:"POST",
   headers:{
     "Accept": "application/json",
@@ -35,10 +35,9 @@ const resp = await fetch(baseUrl + 'Mobs', {
     Image: mobData.Image,
   })
 })
-const data = resp.json()
-addMob(data)
-setMobData(initalMobForm)
-
+.then(resp => resp.json())
+.then(data => addMob(data))
+.then(setMobData(initalMobForm))
 }
 
   return (
@@ -53,15 +52,15 @@ setMobData(initalMobForm)
       </div>
       <div>
         <label htmlFor="name">Difficulty:</label>
-        <input type="number" name="Difficulty" id="Difficulty" value={mobData.Difficulty} onChange={handleChange} min="1" max="10" placeholder='0'/>
+        <input type="number" name="Difficulty" id="Difficulty" value={mobData.Difficulty} onChange={handleChange} min="1" max="10" />
       </div>
       <div>
         <label htmlFor="name">Health:</label>
-        <input type="number" name="Health" id="Health" value={mobData.Health} onChange={handleChange} placeholder='0' min="1" max="10" />
+        <input type="number" name="Health" id="Health" value={mobData.Health} onChange={handleChange} min="1" max="1000" />
       </div>
       <div>
         <label htmlFor="name">Damage:</label>
-        <input type="number" name="Damage" id="Damage" value={mobData.Damage} onChange={handleChange} placeholder='0'min="1" max="10" />
+        <input type="number" name="Damage" id="Damage" value={mobData.Damage} onChange={handleChange} min="1" max="10" />
       </div>
       <div>
         <label htmlFor="name">Image:</label>
@@ -69,6 +68,9 @@ setMobData(initalMobForm)
       </div>
       <input type="submit" value="Create Your Own Mob!"/>
       </form>
+      <img src = {pictureForForm} />
+      <img src={pictureForForm1} />
+     <img src ={pictureForForm2} />
     </div>
   )
 }
